@@ -23,6 +23,7 @@ class LM35 {
     
     LM35();
     LM35(int);
+    LM35(int,int);
     ~LM35();
 };
 
