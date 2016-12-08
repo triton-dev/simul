@@ -15,7 +15,7 @@ class LM35 {
     
   public:
     setPin(int);
-    getPin(int);
+    getPin();
     setAnalogValue(int);
     setDigitalValue(int);
     getDigitalValue(int);
