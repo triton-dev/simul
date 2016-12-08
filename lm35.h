@@ -12,6 +12,7 @@
 class LM35 {
   private:
     int pin;
+    int digitalValue;
     
   public:
     setPin(int);
