@@ -13,8 +13,8 @@
 class EEPROM {
 
 	private:
-        const static int LEN = 512;
-        char mem[LEN];
+        	const static int LEN = 512;
+        	char mem[LEN];
         
 	public:
 	// EEPROM törlése
