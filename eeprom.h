@@ -1,20 +1,18 @@
 /*
-	 EEPROM szimuláció
-
-	 Az arduino pro micro, mini lapka EEPROM elérését 
-	 szimulálja.
-
+*	 EEPROM szimuláció
+*
+*	 Az arduino pro micro, mini lapka EEPROM elérését 
+*	 szimulálja.
+*
 */
 
 #ifndef EEPROM_H
 #define EEPROM_H
 
-
 class EEPROM {
-
 	private:
-        	const static int LEN = 512;
-        	char mem[LEN];
+    const static int LEN = 512;
+    char mem[LEN];
         
 	public:
 	// EEPROM törlése
@@ -29,8 +27,6 @@ class EEPROM {
 		EEPROM();
 	// Destruktor
 		~EEPROM();
-
-
 };
 
 #endif

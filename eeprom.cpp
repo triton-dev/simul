@@ -1,17 +1,13 @@
 /*
-	 EEPROM program
-
+* EEPROM program
+*
 */
 
 #include "eeprom.h"
 
-EEPROM::EEPROM() {
-    
-}
+EEPROM::EEPROM() { }
 
-EEPROM::~EEPROM() {
-
-}
+EEPROM::~EEPROM() { }
 
 bool EEPROM::clear() {
 	for(int i = 0; i <= LEN; i++) {
@@ -38,5 +34,3 @@ bool EEPROM::write(unsigned int address, unsigned char value) {
 	mem[address] = (unsigned char)value;
 	return true;
 }
-
-
