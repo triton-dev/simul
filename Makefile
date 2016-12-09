@@ -21,5 +21,6 @@ ds3231.o: ds3231.h ds3231.cpp
 .PHONY: clean
 clean:
 	rm *.o
+	rm thermo
 	
 	

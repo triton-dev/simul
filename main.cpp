@@ -7,19 +7,20 @@
 using namespace std;
 
 int main(void) {
+  
 	EEPROM eprom;
-	cout << "clear() előtti memóriaszemét...\n";    
-	for(int i=0; i < eprom.length(); i++) {
-		cout << eprom.read(i) << "\t";
-	}
-	cout << "\n";
-	cout <<"clear() utáni állapot\n";
-	for(int i=0;i< eprom.length();i++) {eprom.write(i, i%256);}
-	for(int i=0; i < eprom.length(); i++) {
-		cout << eprom.read(i) << "\t";
-	}
-
-	cout << "\n*****************************************\n";
+	//~ cout << "clear() előtti memóriaszemét...\n";    
+	//~ for(int i=0; i < eprom.length(); i++) {
+		//~ cout << eprom.read(i) << "\t";
+	//~ }
+	//~ cout << "\n";
+	//~ cout <<"clear() utáni állapot\n";
+	//~ for(int i=0;i< eprom.length();i++) {eprom.write(i, i%256);}
+	//~ for(int i=0; i < eprom.length(); i++) {
+		//~ cout << eprom.read(i) << "\t";
+	//~ }
+//~ 
+	//~ cout << "\n*****************************************\n";
 
 	LM35 sensor(23,512);
 	
@@ -34,26 +35,33 @@ int main(void) {
 	
 	cout << "*****************************************\n";
 	
-	DS3231 rtc(25,30,12,4,9,12,16);
+	//DS3231 rtc(37,12,21,1,9,12,16);
+  DS3231 rtc;
 	
 	for(int i=0; i<8; i++) {
 		cout << i << ".nap: " << rtc.getDOW(i) << ",";
 	}
 	cout << "\n";
-	cout << "bcd2dec(72) = " << rtc.bcd2dec(72) << "\n";
-	cout << "dec2bcd(48) = " << rtc.dec2bcd(48) << "\n";
-	for(int i= 0; i<100; i++) {
-		cout <<i << "(dec) = " << rtc.dec2bcd(i) << "\n";
-	}
-	cout << "\n****************************************\n";
-	for(int i= 0; i<154; i++) {
-		cout <<i << "(bcd) = " << rtc.bcd2dec(i) << "\n";
-	}
-	cout << "\n";
+	//~ cout << "bcd2dec(72) = " << rtc.bcd2dec(72) << "\n";
+	//~ cout << "dec2bcd(48) = " << rtc.dec2bcd(48) << "\n";
+	//~ for(int i= 0; i<100; i++) {
+		//~ cout <<i << "(dec) = " << rtc.dec2bcd(i) << "\n";
+	//~ }
+	//~ cout << "\n****************************************\n";
+	//~ for(int i= 0; i<154; i++) {
+		//~ cout <<i << "(bcd) = " << rtc.bcd2dec(i) << "\n";
+	//~ }
+	cout << "\nIdő és dátum:\t";
 	for(int i=0;i<7;i++) {
-		cout << rtc.getDatepart(i);
+		cout << rtc.getDatepart(i) << "\t";
 	}
 	cout << "\n";
+  char* a;
+  a = rtc.getLongDateTime();
+  cout << a << "\n";
+  cout << rtc.getDOW(rtc.getDatepart(4)) << "\n";
+  
+  
 return 0;
 }
 
