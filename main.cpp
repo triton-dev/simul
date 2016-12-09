@@ -2,6 +2,7 @@
 #include <iostream>
 #include "eeprom.h"
 #include "lm35.h"
+#include "ds3231.h"
 
 using namespace std;
 
@@ -18,7 +19,7 @@ int main(void) {
 		cout << eprom.read(i) << "\t";
 	}
 
-	cout << "*****************************************\n";
+	cout << "\n*****************************************\n";
 
 	LM35 sensor(23,512);
 	
@@ -32,7 +33,27 @@ int main(void) {
 	cout << sensor.getAnalogValue() << "\n";
 	
 	cout << "*****************************************\n";
-
+	
+	DS3231 rtc(25,30,12,4,9,12,16);
+	
+	for(int i=0; i<8; i++) {
+		cout << i << ".nap: " << rtc.getDOW(i) << ",";
+	}
+	cout << "\n";
+	cout << "bcd2dec(72) = " << rtc.bcd2dec(72) << "\n";
+	cout << "dec2bcd(48) = " << rtc.dec2bcd(48) << "\n";
+	for(int i= 0; i<100; i++) {
+		cout <<i << "(dec) = " << rtc.dec2bcd(i) << "\n";
+	}
+	cout << "\n****************************************\n";
+	for(int i= 0; i<154; i++) {
+		cout <<i << "(bcd) = " << rtc.bcd2dec(i) << "\n";
+	}
+	cout << "\n";
+	for(int i=0;i<7;i++) {
+		cout << rtc.getDatepart(i);
+	}
+	cout << "\n";
 return 0;
 }
 
