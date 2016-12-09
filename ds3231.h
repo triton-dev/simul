@@ -11,7 +11,9 @@
 		unsigned int datetime[7];
 		
 	public:
-		enum datepart {sec,min,our,dow,day,month,year}; 
+		enum datepart {sec,min,our,dow,day,month,year};
+	 	// enum származtatás. Ha nem jó, ki kell venni.
+	 	datepart dp;
 		
 		int bcd2dec(int);
 		int dec2bcd(int);
