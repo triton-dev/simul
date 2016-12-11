@@ -4,6 +4,8 @@
 #include "lm35.h"
 #include "ds3231.h"
 
+#include <ctime>
+
 using namespace std;
 
 int main(void) {
@@ -61,7 +63,20 @@ int main(void) {
   cout << a << "\n";
   cout << rtc.getDOW(rtc.getDatepart(4)) << "\n";
   
+    char c;
   
+  time_t rawtime;
+  struct tm * timeinfo;
+  char timebuffer[80];
+  while(true) {
+  time(&rawtime);
+  timeinfo = localtime(&rawtime);
+  strftime(timebuffer,80,"%F %T %w",timeinfo);
+  if((c = getchar()) == 27) {
+      break;
+  }
+  cout << timebuffer << "\n";
+}
 return 0;
 }
 
