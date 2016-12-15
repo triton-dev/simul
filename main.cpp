@@ -5,7 +5,7 @@
 #include "ds3231.h"
 
 #include <ctime>
-
+#include <ncurses.h>
 using namespace std;
 
 int main(void) {
@@ -68,14 +68,16 @@ int main(void) {
   time_t rawtime;
   struct tm * timeinfo;
   char timebuffer[80];
+  int ch;
+  
+  initscr();
   while(true) {
   time(&rawtime);
   timeinfo = localtime(&rawtime);
   strftime(timebuffer,80,"%F %T %w",timeinfo);
-  if((c = getchar()) == 27) {
-      break;
-  }
-  cout << timebuffer << "\n";
+  mvprintw(10,5,timebuffer);
+  //cout << timebuffer << "\n";
+  refresh();
 }
 return 0;
 }

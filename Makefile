@@ -3,10 +3,10 @@ CFLAGS = -std=c++11
 OUT = -o thermo
 
 thermo: main.o eeprom.o lm35.o ds3231.o
-	$(CC) $(CFLAGS) *.o $(OUT)
+	$(CC) $(CFLAGS) -lncurses *.o $(OUT)
 
-main.o: main.cpp    
-	$(CC) $(CFLAGS) -c main.cpp
+main.o: main.cpp
+	$(CC) $(CFLAGS) -lncurses -c main.cpp
 
 eeprom.o: eeprom.h eeprom.cpp
 	$(CC) $(CFLAGS) -c eeprom.cpp
